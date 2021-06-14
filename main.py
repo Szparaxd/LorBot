@@ -1,0 +1,180 @@
+import discord
+import os
+
+import requests
+import json
+import random
+from replit import db
+
+from numpy.random import randint
+from keep_alive import keep_alive
+
+client = discord.Client()
+
+key_words = ["miłego","miły","miłym","czułe"]
+
+@client.event
+async def on_ready():
+  print('Bot is ready.')
+
+@client.event
+async def on_message(message):
+  msg = message.content
+  if message.author == client:
+   return
+  
+  if message.content.startswith('-toxic'):
+    juser = message.author.id
+    if juser == 369981233842618388:
+      await message.channel.send("`Nie dla psa!`")
+    else:
+      zmienna = randint(0, 100)
+      s = str(zmienna)
+      txt = "`Poziom toksyczności wynosi: " + s + "%`"
+      await message.channel.send(txt)
+
+  if message.content.startswith('-simp'):
+    juser = message.author.id 
+    if juser == 621044725230600232:
+      zmienna = randint(70, 100) 
+      s = str(zmienna)
+      txt = "`Poziom simpu wynosi: " + s +"%`"
+      await message.channel.send(txt)
+    elif juser == 369981233842618388:
+      await message.channel.send("`Nie dla psa!`")
+    else:
+      zmienna = randint(0, 100) 
+      s = str(zmienna)
+      txt = "`Poziom simpu wynosi: " + s +"%`"
+      await message.channel.send(txt)
+
+  if message.content.startswith('-dick'):
+    juser = message.author.id 
+    if juser == 621044725230600232 or juser == 311945690026606592:
+      zmienna = randint(16, 30) 
+      s = str(zmienna)
+      txt = "`Twój kutas ma: " + s +"cm` <:21:831963794867224586>"
+      await message.channel.send(txt)
+    elif juser == 369981233842618388:
+      await message.channel.send("`Nie dla psa!`")
+    elif juser == 668507275937316875:
+      txt = "`Marysia ty to lepiej cipke pokaż`"
+      await message.channel.send(txt)  
+    else:
+      emotka = "<:21:831963794867224586>" 
+      zmienna = randint(4, 30) 
+      s = str(zmienna)
+      txt="";
+      if zmienna>15:
+        txt = "`Twój kutas ma: " + s +"cm`" + emotka 
+        await message.channel.send(txt)
+      else:
+        txt = "`Twój kutas ma: " + s +"cm`"
+        await message.channel.send(txt)
+      
+  if message.content.startswith('-iq'):
+    juser = message.author.id
+    if juser == 369981233842618388:
+      await message.channel.send("`Nie dla psa!`")
+    else:
+      zmienna = randint(0, 200)
+      s = str(zmienna)
+      txt = "`Masz: " + s + "iq`"
+      await message.channel.send(txt)
+
+  if message.content.startswith('-pussy'):
+    juser = message.author.id
+    if juser == 369981233842618388:
+      await message.channel.send("`Nie dla psa!`")
+    else:
+      zmienna = randint(0, 200)
+      s = str(zmienna)
+      txt = "`Chętnie zobaczymy :)`"
+      await message.channel.send(txt)
+
+  if message.content.startswith('-tilt'):
+    zmienna = randint(0, 10)
+    s = str(zmienna)
+
+    if(zmienna==10):
+      txt = "`Poziom Szymon ~ Daj sobie spokój na dziś`"
+      await message.channel.send(txt)
+    elif(zmienna==9):
+      txt = "`Poziom Kacper ~ Dobra ff to nie ma sensu`"
+      await message.channel.send(txt)
+    elif(zmienna==8):
+      txt = "`Poziom Bartek ~ Wkurwiony jak sam diabeł`"
+      await message.channel.send(txt)
+    else:
+      txt = "`Dziś można grać `"
+      await message.channel.send(txt)
+
+  if message.content.startswith('-list tilt'):
+    txt1 = "`1.Poziom Szymon ~ Daj sobie spokój na dziś \n2.Poziom Kacper ~ Dobra ff to nie ma sens \n3.Poziom Bartek ~ Wkurwiony jak sam diabeł`"
+
+    await message.channel.send(txt1)
+    
+       
+
+
+  if message.content.startswith('-thotrate'):
+    zmienna = randint(0, 100)
+    s = str(zmienna)
+    txt = "`thotrate: " + s +"%`"
+    await message.channel.send(txt)
+
+  if message.content.startswith('-lorid'):
+    zmienna = str(message.author.id)
+    
+    txt = "`" + zmienna +"`"
+    await message.channel.send(txt)
+
+  if message.content.startswith('-smile'):
+    aaa = "Twoja stara to dupa blada"
+    embedVar = discord.Embed(title="LorBot", description=aaa, color=0x00ff00)
+    #embedVar.add_field(name="Field1", value="hi", inline=False)
+    #embedVar.add_field(name="Field2", value="hi2", inline=False)
+    await message.channel.send(embed=embedVar)
+
+
+
+  if message.content.startswith('-test'):
+    f = open("mileslowka.txt", "r")
+    Lines = f.readlines();
+    count =0;
+    thislist = []
+    for line in Lines:
+      count += 1 
+      thislist.append(line)
+
+    zmienna = randint(0,len(thislist))
+    txt = thislist[zmienna]
+    await message.channel.send(txt);
+
+  if message.content.startswith('-addtxt'):
+    encouraging_mess = msg.split("-addtxt ", 1)[1]
+    file_object = open('mileslowka.txt','a')
+    file_object.write(encouraging_mess+"\n")
+    file_object.close()
+    await message.channel.send("New message added.")
+
+  if any(word in msg for word in key_words):
+
+    f = open("mileslowka.txt", "r")
+    Lines = f.readlines();
+    count =0;
+    thislist = []
+    for line in Lines:
+      count += 1 
+      thislist.append(line)
+
+    zmienna = randint(0,len(thislist))
+    txt = thislist[zmienna]
+    embedVar = discord.Embed(title="LorBot", description=txt, color=0x00ff00)
+    await message.channel.send(embed=embedVar);
+    
+
+    
+621044725230600232
+keep_alive()
+client.run(os.getenv('TOKEN'))
