@@ -5,6 +5,7 @@ import requests
 import json
 import random
 from replit import db
+from discord.ext import commands
 
 from numpy.random import randint
 from keep_alive import keep_alive
@@ -167,11 +168,25 @@ async def on_message(message):
     for line in Lines:
       count += 1 
       thislist.append(line)
-
+    user = message.author.mention
     zmienna = randint(0,len(thislist))
     txt = thislist[zmienna]
-    embedVar = discord.Embed(title="LorBot", description=txt, color=0x00ff00)
+    embedVar = discord.Embed(title="LorBot", description=user + txt, color=0x00ff00)
     await message.channel.send(embed=embedVar);
+
+  if message.content.startswith('-komendy'):
+    f2 = open("komendy.txt","r")
+    txtkomenda = f2.readlines();
+    
+    count = 0;
+    ciagznakow ="";
+    for line in txtkomenda:
+      count += 1 
+      ciagznakow+=line
+    embedVar = discord.Embed(title="LorBot - Komendy",description=ciagznakow , color=0x00ff00)
+    #embedVar.add_field(name="Field2", value="hi2", inline=False)
+    await message.channel.send(embed=embedVar);
+    
     
 
     
